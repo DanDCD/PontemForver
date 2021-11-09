@@ -15,7 +15,8 @@ func setUpServer():
 	get_tree().network_peer = peer
 	ServerGuest.queue_free()
 	print("Host Set Up")
-	
+
+# guest details saved when a new peer connects to the server
 func saveGuestDetails(id: int, userName: String):
 	guestDataContainer.addGuest(id, userName)
 	print(userName)
