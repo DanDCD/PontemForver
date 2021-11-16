@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Globals/Factories/ComponentIDTagTracker/ComponentIDTagTracker.gd" type="Script" id=1]
+
+[node name="ComponentIDTagTracker" type="Node"]
+script = ExtResource( 1 )

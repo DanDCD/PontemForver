@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.gd" type="Script" id=1]
+
+[node name="MovementBodyComponent" type="KinematicBody2D"]
+script = ExtResource( 1 )

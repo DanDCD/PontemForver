@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "ComponentIDTag",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/ComponentIDTag/ComponentIDTag.gd"
+}, {
+"base": "Node",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Entity/Entity.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "MovementBodyComponent",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.gd"
+} ]
+_global_script_class_icons={
+"ComponentIDTag": "",
+"Entity": "",
+"MovementBodyComponent": ""
+}
+
 [application]
 
 config/name="Test"
@@ -19,6 +41,9 @@ config/icon="res://icon.png"
 NetworkInterface="*res://src/Globals/Network/NetworkInterface.tscn"
 ServerGuest="*res://src/Globals/Network/ServerGuest.tscn"
 ServerHost="*res://src/Globals/Network/ServerHost.tscn"
+ErrorLogger="*res://src/Globals/Utility/ErrorLogger/ErrorLogger.tscn"
+ResourceManager="*res://src/Globals/Utility/ResourceManager/ResourceManager.tscn"
+ComponentIdTagTracker="*res://src/Globals/Factories/ComponentIDTagTracker/ComponentIDTagTracker.tscn"
 
 [physics]
 
