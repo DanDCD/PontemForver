@@ -2,5 +2,7 @@
 
 [ext_resource path="res://src/EntityCompSys/ComponentIDTag/ComponentIDTag.gd" type="Script" id=1]
 
-[node name="ComponentIDTag" type="Node" groups=["IDTag"]]
+[node name="ComponentIDTag" type="Node" groups=[
+"IDTag",
+]]
 script = ExtResource( 1 )

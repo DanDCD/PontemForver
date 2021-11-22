@@ -10,24 +10,48 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Behaviour",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Behaviours/Behaviour/Behaviour.gd"
+}, {
+"base": "Node",
 "class": "ComponentIDTag",
 "language": "GDScript",
 "path": "res://src/EntityCompSys/ComponentIDTag/ComponentIDTag.gd"
+}, {
+"base": "Node",
+"class": "Controller",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Controllers/Controller/Controller.gd"
 }, {
 "base": "Node",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://src/EntityCompSys/Entity/Entity.gd"
 }, {
+"base": "Behaviour",
+"class": "MovementBehaviour",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/MovementBehaviour/MovementBehaviour.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "MovementBodyComponent",
 "language": "GDScript",
 "path": "res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.gd"
+}, {
+"base": "MovementBehaviour",
+"class": "WalkMovementBehaviour",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/WalkMovementBehaviour/WalkMovementBehaviour.gd"
 } ]
 _global_script_class_icons={
+"Behaviour": "",
 "ComponentIDTag": "",
+"Controller": "",
 "Entity": "",
-"MovementBodyComponent": ""
+"MovementBehaviour": "",
+"MovementBodyComponent": "",
+"WalkMovementBehaviour": ""
 }
 
 [application]

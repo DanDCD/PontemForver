@@ -14,5 +14,5 @@ func setId(newID: int):
 func getId():
 	return id
 
-func _ready():
+func _init():
 	setId(ComponentIdTagTracker.getNewID())

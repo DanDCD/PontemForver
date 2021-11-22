@@ -1,0 +1,4 @@
+extends MovementBehaviour
+class_name WalkMovementBehaviour
+
+

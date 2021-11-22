@@ -3,12 +3,10 @@ extends Node
 
 
 func displayMessage(message: String):
-	outToScreen("[MSG]: ", message)
+	print_debug("[MSG]: ", message)
 	
 	
 func displayError(message: String):
-	outToScreen("[ERROR]", message)
+	print("[ERROR]", message)
 	
 	
-func outToScreen(category:String, message:String):
-	print(category+message)
