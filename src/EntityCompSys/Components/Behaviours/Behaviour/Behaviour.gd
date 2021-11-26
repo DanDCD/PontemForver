@@ -14,7 +14,7 @@ func cleanUpBehaviour():
 
 
 func _ready():
-	
+	setUpBehaviour()
 
 
 

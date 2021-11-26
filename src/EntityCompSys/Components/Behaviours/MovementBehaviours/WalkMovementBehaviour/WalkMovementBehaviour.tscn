@@ -5,3 +5,4 @@
 
 [node name="WalkMovementBehaviour" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+speed = 10

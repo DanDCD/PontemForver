@@ -28,7 +28,7 @@ func collectComponents():
 # returns a component with given ID -checks componentMap 
 func getComponentByID(search_id: int):
 	if not componentMap.has(search_id):
-		return
+		return null
 	return componentMap[search_id]
 	
 # returns an array of components in a given group
@@ -39,6 +39,10 @@ func getComponentsByGroup(groupName: String)->Array:
 			arrayToReturn.append(component)
 	return arrayToReturn
 	
+func removeComponentsByGroup(groupName: String):
+	var compsToRemove: Array = getComponentsByGroup(groupName)
+	for component in compsToRemove:
+		component.queue_free()
 
 	
 func addComponent(newComponent: Object, addAsChild: bool = true):

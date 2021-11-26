@@ -69,6 +69,13 @@ ErrorLogger="*res://src/Globals/Utility/ErrorLogger/ErrorLogger.tscn"
 ResourceManager="*res://src/Globals/Utility/ResourceManager/ResourceManager.tscn"
 ComponentIdTagTracker="*res://src/Globals/Factories/ComponentIDTagTracker/ComponentIDTagTracker.tscn"
 
+[input]
+
+sprint={
+"deadzone": 0.5,
+"events": [  ]
+}
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -3,9 +3,9 @@ class_name MovementBehaviour
 
 var movementBody: Object = null
 var direction: Vector2 = Vector2.ZERO
-var speed: int = 0
+export var speed: int = 0
 var velocity: Vector2 = Vector2.ZERO
-
+export var deleteSibilingMoveBehaviour: bool = true
 
 # sets the new body for the behaviour to focus - will return true if set successfully
 # fails if body not in movementbody group
@@ -15,6 +15,9 @@ func setMovementBody(newBody: Object)->bool:
 	movementBody = newBody
 	return true
 
+
+func moveBehaviourSetUp():
+	pass
 
 func preMoveBehaviour():
 	pass
@@ -50,15 +53,13 @@ func moveBody(custom_velocity = null):
 		
 func setUp():
 	if movementBody == null:
+		if deleteSibilingMoveBehaviour:
+			get_parent().removeComponentsByGroup("MovementBehaviour")
 		setMovementBody(findMovementBody())
-	
-		
-		
+		moveBehaviourSetUp()
 
 		
-
-		
-func _ready():
+func setUpBehaviour():
 	if get_parent().isSetUp():
 		setUp()
 	else:
