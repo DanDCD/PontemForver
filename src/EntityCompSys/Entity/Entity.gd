@@ -45,6 +45,11 @@ func removeComponentsByGroup(groupName: String):
 		component.queue_free()
 
 	
+func addComponentFromPackedScene(newComp: PackedScene, addAsChild: bool = true):
+	var newCompOb: Object = newComp.instance()
+	addComponent(newCompOb, addAsChild)
+	
+	
 func addComponent(newComponent: Object, addAsChild: bool = true):
 	# newComponent must be in component group AND have an IDTag as a child
 	if not (newComponent.is_in_group("Component")):

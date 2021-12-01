@@ -10,3 +10,4 @@ const POSITIONGLUER = preload("res://src/EntityCompSys/Components/Kinematics/Pos
 const MOVEMENTBEHAVIOUR = preload("res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/MovementBehaviour/MovementBehaviour.tscn")
 const WALKMOVEMENTBEHAVIOUR = preload("res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/WalkMovementBehaviour/WalkMovementBehaviour.tscn")
 const RUNMOVEMENTBEHAVIOUR = preload("res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/RunMovementBehaviour/RunMovementBehaviour.tscn")
+const IDLEMOVEBEHAVIOUR = preload("res://src/EntityCompSys/Components/Behaviours/MovementBehaviours/IdleMovementBehaviour/IdleMovementBehaviour.tscn")

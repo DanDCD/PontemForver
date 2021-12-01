@@ -1,1 +1,2 @@
 extends MovementBehaviour
+class_name RunMovementBehaviour

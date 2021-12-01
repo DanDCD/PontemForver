@@ -1,8 +1,7 @@
 extends Controller
 
 var movementBehaviour: Object = null
-
-
+var alreadyWalking: bool = false
 
 
 func sendMovementInputs():
@@ -12,17 +11,26 @@ func sendMovementInputs():
 			return
 		movementBehaviour = movementBehaviourArray[0]
 	
-	if(Input.is_action_just_pressed("sprint")):
-		pass
-		
-			
 	var movingDirection: Vector2
 	movingDirection.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	movingDirection.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+
+	if not alreadyWalking and movingDirection != Vector2.ZERO:
+		entity.addComponentFromPackedScene(ResourceManager)
+		
 	
 	
 	
+	if(Input.is_action_just_released("sprint")):
+		entity.addComponentFromPackedScene(ResourceManager.WALKMOVEMENTBEHAVIOUR)
 	
+	elif(Input.is_action_just_pressed("sprint")):
+		entity.addComponentFromPackedScene(ResourceManager.WALKMOVEMENTBEHAVIOUR)
+	
+		
+	
+func setUpController():
+	entity.addComponentFromPackedScene(ResourceManager)
 
 
 func _physics_process(delta):
