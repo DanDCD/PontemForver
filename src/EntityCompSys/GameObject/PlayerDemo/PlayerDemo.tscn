@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/EntityCompSys/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/EntityCompSys/Components/Sprites/BodySprite/BodySprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://src/EntityCompSys/Components/Controllers/PlayerController/PlayerController.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -24,3 +25,5 @@ shape = SubResource( 1 )
 
 [node name="BodySprite" parent="." index="1" instance=ExtResource( 2 )]
 frames = SubResource( 2 )
+
+[node name="PlayerController" parent="." index="2" instance=ExtResource( 5 )]

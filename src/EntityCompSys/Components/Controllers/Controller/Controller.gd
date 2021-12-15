@@ -4,12 +4,16 @@ class_name Controller
 var entity: Object = null
 
 
-
+# virtual
 func setUpController():
 	pass
 
+# methods
+
+func bootController():
+	entity = get_parent()
+	setUpController()
 
 
 func _ready():
-	entity = get_parent()
-	setUpController()
+	get_parent().connect("EntitySetUp", self,"bootController")

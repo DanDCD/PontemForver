@@ -42,13 +42,13 @@ func moveBody(custom_velocity = null):
 	preMoveBehaviour()
 	if movementBody == null:
 		return
-	if custom_velocity != null:
+	if custom_velocity == null:
 		direction = direction.normalized()
 		velocity = direction * speed
-		movementBody.move(velocity)
+		movementBody.moveBody(velocity)
 		postMoveBehaviour()
 	else:
-		movementBody.move(custom_velocity)
+		movementBody.moveBody(custom_velocity)
 		postMoveBehaviour()
 		
 func setUp():
@@ -60,7 +60,7 @@ func setUp():
 
 		
 func setUpBehaviour():
-	if get_parent().isSetUp():
+	if get_parent().isSetUp:
 		setUp()
 	else:
 		get_parent().connect("EntitySetUp", self, "setUp")

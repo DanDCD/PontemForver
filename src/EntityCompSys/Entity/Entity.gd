@@ -39,30 +39,30 @@ func getComponentsByGroup(groupName: String)->Array:
 			arrayToReturn.append(component)
 	return arrayToReturn
 	
-func removeComponentsByGroup(groupName: String):
+func removeComponentsByGroup(groupName: String, idToIgnore: int):
 	var compsToRemove: Array = getComponentsByGroup(groupName)
 	for component in compsToRemove:
 		component.queue_free()
 
 	
-func addComponentFromPackedScene(newComp: PackedScene, addAsChild: bool = true):
+func addComponentFromPackedScene(newComp: PackedScene, addAsChild: bool = true)->Object:
 	var newCompOb: Object = newComp.instance()
-	addComponent(newCompOb, addAsChild)
+	return addComponent(newCompOb, addAsChild)
 	
 	
-func addComponent(newComponent: Object, addAsChild: bool = true):
+func addComponent(newComponent: Object, addAsChild: bool = true)-> Object:
 	# newComponent must be in component group AND have an IDTag as a child
 	if not (newComponent.is_in_group("Component")):
 		print()
 		ErrorLogger.displayError("Entity:"+ String(entityId)+" cant add "+newComponent.name+ " -not in group component")
-		return
+		return null
 	var compID: int = -1 # used to store the id of the component before moving it into the map
 	for child in newComponent.get_children():
 		if child.is_in_group("IDTag"):
 			compID = child.id
 	if compID == -1:
 		ErrorLogger.displayError("Entity:"+ String(entityId)+" cant add "+newComponent.name+ " -no id tag found")
-		return
+		return null
 		
 	# if node is in group and id has been found:
 	if addAsChild:
@@ -71,7 +71,7 @@ func addComponent(newComponent: Object, addAsChild: bool = true):
 		
 	ErrorLogger.displayMessage(name+"-id:"+String(entityId)+": Added "+newComponent.name+"-id:"+String(compID)+" to components")
 	componentMap[compID] = newComponent
-	
+	return newComponent
 	
 func _ready():
 	collectComponents()
