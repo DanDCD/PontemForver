@@ -22,6 +22,11 @@ func collectComponents():
 	for child in get_children():
 		addComponent(child, false)
 
+func getComponentID(component)->int:
+	for child in component.get_children():
+		if child.is_in_group("IDTag"):
+			return child.getId()
+	return -1
 
 
 
@@ -39,10 +44,15 @@ func getComponentsByGroup(groupName: String)->Array:
 			arrayToReturn.append(component)
 	return arrayToReturn
 	
-func removeComponentsByGroup(groupName: String, idToIgnore: int):
+func removeComponentsByGroup(groupName: String, idToIgnore: int = -1):
 	var compsToRemove: Array = getComponentsByGroup(groupName)
 	for component in compsToRemove:
-		component.queue_free()
+		if idToIgnore == -1:
+			component.queue_free()
+		else:
+			if getComponentID(component) != idToIgnore:
+				component.queue_free()
+		
 
 	
 func addComponentFromPackedScene(newComp: PackedScene, addAsChild: bool = true)->Object:
@@ -74,6 +84,7 @@ func addComponent(newComponent: Object, addAsChild: bool = true)-> Object:
 	return newComponent
 	
 func _ready():
+	EntityFactory.assignEntity(self)
 	collectComponents()
 	switchOnIsSetUp(true)
 	emit_signal("EntitySetUp")

@@ -4,3 +4,4 @@
 
 [node name="ErrorLogger" type="Node"]
 script = ExtResource( 1 )
+disabled = true

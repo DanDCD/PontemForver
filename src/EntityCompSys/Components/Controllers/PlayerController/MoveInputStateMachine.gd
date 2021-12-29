@@ -4,6 +4,7 @@ extends FiniteStateMachine
 # do not confuse this with other movement logic - this is purely tracking input
 
 func setUpMachine():
+	print("setting up")
 	addState("idle")
 	addState("walk")
 	addState("sprint")
@@ -15,11 +16,14 @@ func stateProcess(delta):
 
 func onNewState(newState, oldState):
 	if newState == states.idle:
-		componentOwner.changeToIdle()
+		print("switch to idle")
+		get_parent().changeToIdle()
 	elif newState == states.walk:
-		componentOwner.changeTowalk()
+		print("switch to walk")
+		get_parent().changeToWalk()
 	elif newState == states.sprint:
-		componentOwner.changeToSprint()
+		print("switch to run")
+		get_parent().changeToSprint()
 
 
 func getTransition():
@@ -31,7 +35,9 @@ func getTransition():
 		else:
 			return states.walk
 	# if no move input detected
+	
 	else:
+		
 		return states.idle 
 		
 

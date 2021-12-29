@@ -54,7 +54,7 @@ func moveBody(custom_velocity = null):
 func setUp():
 	if movementBody == null:
 		if deleteSibilingMoveBehaviour:
-			get_parent().removeComponentsByGroup("MovementBehaviour")
+			get_parent().removeComponentsByGroup("MovementBehaviour", get_parent().getComponentID(self))
 		setMovementBody(findMovementBody())
 		moveBehaviourSetUp()
 

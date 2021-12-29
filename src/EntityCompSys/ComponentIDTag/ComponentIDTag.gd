@@ -15,4 +15,4 @@ func getId():
 	return id
 
 func _init():
-	setId(ComponentIdTagTracker.getNewID())
+	setId(IdVendor.getNewComponentID())

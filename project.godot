@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/EntityCompSys/Components/Controllers/Controller/Controller.gd"
 }, {
+"base": "Reference",
+"class": "DataPack",
+"language": "GDScript",
+"path": "res://src/Network/DataPack/DataPack.gd"
+}, {
+"base": "Reference",
+"class": "DataQueue",
+"language": "GDScript",
+"path": "res://src/Globals/Network/DataBuffer/DataQueue.gd"
+}, {
 "base": "Node",
 "class": "Entity",
 "language": "GDScript",
@@ -33,6 +43,16 @@ _global_script_classes=[ {
 "class": "FiniteStateMachine",
 "language": "GDScript",
 "path": "res://src/EntityCompSys/SubComponentTools/FiniteStateMachine/FiniteStateMachine.gd"
+}, {
+"base": "Node",
+"class": "GuestData",
+"language": "GDScript",
+"path": "res://src/Network/GuestData/GuestData.gd"
+}, {
+"base": "Node",
+"class": "IdManager",
+"language": "GDScript",
+"path": "res://src/Globals/Network/ServerHost/IDManager.gd"
 }, {
 "base": "MovementBehaviour",
 "class": "IdleMovementBehaviour",
@@ -49,6 +69,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.gd"
 }, {
+"base": "Node",
+"class": "NetworkAdaptor",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Network/NetworkAdapterComponent/NetworkAdaptorComponent.gd"
+}, {
+"base": "NetworkAdaptor",
+"class": "PlayerNetworkAdaptor",
+"language": "GDScript",
+"path": "res://src/EntityCompSys/Components/Network/PlayerNetworkAdaptor/PlayerNetworkAdaptorComponent.gd"
+}, {
+"base": "Node",
+"class": "Processor",
+"language": "GDScript",
+"path": "res://src/Globals/Network/DataBuffer/Processor.gd"
+}, {
 "base": "MovementBehaviour",
 "class": "RunMovementBehaviour",
 "language": "GDScript",
@@ -63,11 +98,18 @@ _global_script_class_icons={
 "Behaviour": "",
 "ComponentIDTag": "",
 "Controller": "",
+"DataPack": "",
+"DataQueue": "",
 "Entity": "",
 "FiniteStateMachine": "",
+"GuestData": "",
+"IdManager": "",
 "IdleMovementBehaviour": "",
 "MovementBehaviour": "",
 "MovementBodyComponent": "",
+"NetworkAdaptor": "",
+"PlayerNetworkAdaptor": "",
+"Processor": "",
 "RunMovementBehaviour": "",
 "WalkMovementBehaviour": ""
 }
@@ -80,18 +122,27 @@ config/icon="res://icon.png"
 
 [autoload]
 
-NetworkInterface="*res://src/Globals/Network/NetworkInterface.tscn"
-ServerGuest="*res://src/Globals/Network/ServerGuest.tscn"
-ServerHost="*res://src/Globals/Network/ServerHost.tscn"
+NetworkInterface="*res://src/Globals/Network/NetworkInterface/NetworkInterface.tscn"
+ServerGuest="*res://src/Globals/Network/ServerGuest/ServerGuest.tscn"
+ServerHost="*res://src/Globals/Network/ServerHost/ServerHost.tscn"
 ErrorLogger="*res://src/Globals/Utility/ErrorLogger/ErrorLogger.tscn"
 ResourceManager="*res://src/Globals/Utility/ResourceManager/ResourceManager.tscn"
-ComponentIdTagTracker="*res://src/Globals/Factories/ComponentIDTagTracker/ComponentIDTagTracker.tscn"
+DataPackFactory="*res://src/Globals/Factories/DataPackFactory/DataPackFactory.tscn"
+EntityFactory="*res://src/Globals/Factories/EntityFactory/EntityFactory.tscn"
+DataBuffer="*res://src/Globals/Network/DataBuffer/DataBuffer.tscn"
+IdVendor="*res://src/Globals/Network/IDVendor/IDVendor.tscn"
+GlobalOpCodes="*res://src/Globals/Network/GlobalOpcodes/GlobalOpCodes.tscn"
+
+[display]
+
+window/size/fullscreen=true
 
 [input]
 
 sprint={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]

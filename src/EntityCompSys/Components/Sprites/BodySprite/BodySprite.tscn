@@ -3,9 +3,7 @@
 [ext_resource path="res://src/EntityCompSys/Components/Sprites/BodySprite/BodySprite.gd" type="Script" id=1]
 [ext_resource path="res://src/EntityCompSys/ComponentIDTag/ComponentIDTag.tscn" type="PackedScene" id=2]
 
-[node name="BodySprite" type="AnimatedSprite" groups=[
-"Component",
-]]
+[node name="BodySprite" type="AnimatedSprite" groups=["Component"]]
 script = ExtResource( 1 )
 
 [node name="ComponentIDTag" parent="." instance=ExtResource( 2 )]

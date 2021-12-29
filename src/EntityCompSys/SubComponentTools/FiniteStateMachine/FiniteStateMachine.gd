@@ -3,7 +3,6 @@ class_name FiniteStateMachine
 
 var states = {}
 var currentState = null
-var componentOwner = null
 signal OnNewState(newState, oldState)
 
 
@@ -26,12 +25,13 @@ func setUpMachine():
 # methods
 
 func runProcess(delta):
+	
 	if currentState == null:
 		return
-		stateProcess(delta)
-		var nextState = getTransition()
-		if nextState:
-			setState(nextState)
+	stateProcess(delta)
+	var nextState = getTransition()
+	if nextState != null:
+		setState(nextState)
 		
 	
 func addState(name: String):
@@ -40,14 +40,10 @@ func addState(name: String):
 func setState(newState):
 	if newState == currentState:
 		return
-	if newState in states:
-		var oldState = currentState
-		currentState = newState
-		onNewState(currentState, oldState)
-		emit_signal("OnNewState", currentState, oldState)
+	var oldState = currentState
+	currentState = newState
+	onNewState(currentState, oldState)
+	emit_signal("OnNewState", currentState, oldState)
 
 
-# must be called to start machine
-func Boot():
-	componentOwner = get_parent()
-	setUpMachine()
+

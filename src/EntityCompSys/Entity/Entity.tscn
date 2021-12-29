@@ -2,7 +2,5 @@
 
 [ext_resource path="res://src/EntityCompSys/Entity/Entity.gd" type="Script" id=1]
 
-[node name="Entity" type="Node" groups=[
-"Entity",
-]]
+[node name="Entity" type="Node" groups=["Entity"]]
 script = ExtResource( 1 )

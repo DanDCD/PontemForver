@@ -3,10 +3,7 @@
 [ext_resource path="res://src/EntityCompSys/Components/Kinematics/Bodies/MovementBodyComponent.gd" type="Script" id=1]
 [ext_resource path="res://src/EntityCompSys/ComponentIDTag/ComponentIDTag.tscn" type="PackedScene" id=2]
 
-[node name="MovementBodyComponent" type="KinematicBody2D" groups=[
-"Component",
-"MovementBody",
-]]
+[node name="MovementBodyComponent" type="KinematicBody2D" groups=["Component", "MovementBody"]]
 script = ExtResource( 1 )
 
 [node name="ComponentIDTag" parent="." instance=ExtResource( 2 )]
