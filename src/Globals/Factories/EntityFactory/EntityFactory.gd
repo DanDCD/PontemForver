@@ -19,6 +19,13 @@ func getEntity(id: int)->Entity:
 	
 
 
-
-
+func createPlayer():
+	var player = ResourceManager.PLAYER.instance()
+	var controller = ResourceManager.PLAYERCONTROLLER.instance()
+	player.addComponent(controller)
+	assignEntity(player)
+	
+func createPlayerDummy():
+	var player = ResourceManager.PLAYER.instance()
+	assignEntity(player)
 

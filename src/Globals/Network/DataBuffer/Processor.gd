@@ -7,8 +7,6 @@ func processPack(dataPack: DataPack):
 	pass
 
 
-
-
 ## METHODS
 
 # send the dataPack to its accossiated adaptor
@@ -18,10 +16,13 @@ func sendPackToLocalAdaptor(dataPack:DataPack):
 	var adaptor: NetworkAdaptor = entity.getComponentByID(DataPack.ADAPTORTARGETID)
 	adaptor.recievePack(dataPack)
 
+
 # returns true if the pack has no target adaptor
 func isOpGlobal(dataPack: DataPack)->bool:
 	return dataPack.getData()[DataPack.ADAPTOROWNERID] == -1
 
+
+# processes the logic for non-adaptor opcodes
 func processGlobalOpcode(dataPack: DataPack):
 	match dataPack.getData()[DataPack.OPCODE]:
 		
@@ -34,7 +35,15 @@ func processGlobalOpcode(dataPack: DataPack):
 			# grant new entity ids
 			IdVendor.recieveNewEntityIDs(dataPack.getData()[DataPack.operandBeginIndex], 
 				dataPack.getData()[DataPack.operandBeginIndex+1])
+				
 		GlobalOpCodes.codes.RQST_NEW_CMPIDS:
-			pass
+			#asks server to provide more comp ids
+			if not NetworkInterface.isServerHost():
+				return
+			ServerHost.sendBatchCompIDs(dataPack.getData()[DataPack.PEERID])
+			
 		GlobalOpCodes.codes.RQST_NEW_ENTIDS:
-			pass
+			#asks server to provide more ent ids
+			if not NetworkInterface.isServerHost():
+				return
+			ServerHost.sendBatchEntIDs(dataPack.getData()[DataPack.PEERID])

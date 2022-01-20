@@ -4,3 +4,4 @@
 
 [node name="EntryPoint" type="Node"]
 script = ExtResource( 1 )
+isServer = true

@@ -4,11 +4,24 @@ extends Node
 
 
 var peerID: int
-
+var safeToProcess: bool = true setget setSafeToProcess
+signal processSafetyChanged(isSafe) 
 # UTILITY METHODS
 
 func isServerHost()->bool:
-	return(get_tree().get_rpc_sender_id()  == 1)
+	return(get_tree().get_rpc_sender_id()  == 0)
+
+func setSafeToProcess(safety: bool):
+	if safeToProcess == safety:
+		return
+	safeToProcess = safety
+	if not safeToProcess:
+		print("pause")
+		get_tree().paused = true
+	else:
+		print("unpause")
+		get_tree().paused = false
+	emit_signal("processSafetyChanged", safeToProcess)
 
 
 # ADMIN METHODS

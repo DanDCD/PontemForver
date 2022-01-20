@@ -16,4 +16,7 @@ func bootController():
 
 
 func _ready():
-	get_parent().connect("EntitySetUp", self,"bootController")
+	if get_parent().isSetUp:
+		bootController()
+	else:
+		get_parent().connect("EntitySetUp", self,"bootController")
