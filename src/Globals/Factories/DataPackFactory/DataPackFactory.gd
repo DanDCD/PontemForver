@@ -8,3 +8,5 @@ func getNewPack(opcode: int, adaptorOwnerID: int = -1, adaptorTargetID: int= -1)
 	adaptorOwnerID, adaptorTargetID, opcode, NetworkInterface.peerID)
 	packID += 1
 	return pack
+
+

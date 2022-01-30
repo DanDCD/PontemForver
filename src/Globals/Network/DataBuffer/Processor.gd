@@ -47,3 +47,6 @@ func processGlobalOpcode(dataPack: DataPack):
 			if not NetworkInterface.isServerHost():
 				return
 			ServerHost.sendBatchEntIDs(dataPack.getData()[DataPack.PEERID])
+		
+		GlobalOpCodes.codes.CRT_DMY_PLY:
+			pass

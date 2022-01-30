@@ -21,12 +21,11 @@ func processQueue(dataQueue: DataQueue):
 	# logic to interpret datapack
 	var data:DataPack = dataQueue.popData()
 	
-
-
 func processBuffer():
 	processQueue(mediumPriorityQueue)
 	
-	
+
+
 
 func _physics_process(delta):
 	if not disabled:

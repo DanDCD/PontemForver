@@ -2,27 +2,51 @@ extends Node
 # avoids necessity for tree symettry between Host and Guest peers
 # ALL rpcs are called through here
 
-
+# network id of peer that owns this client/server
 var peerID: int
-var safeToProcess: bool = true setget setSafeToProcess
-signal processSafetyChanged(isSafe) 
+# all these flags must be true for the network to begin processing packets
+var safeToProcessFlags = {
+	
+	"enoughIDs": false,
+	"gameWorldReady": false
+	
+	
+}
+# emits when a flag gets changed - returns true if all flags are true
+signal processSafetyChanged(isSafe) # note: if i client becomes unsafe we disconnect and reconnect
+
+
+
 # UTILITY METHODS
+
+func hookUpSafetyDependencies():
+	pass
+
 
 func isServerHost()->bool:
 	return(get_tree().get_rpc_sender_id()  == 0)
 
-func setSafeToProcess(safety: bool):
-	if safeToProcess == safety:
+# allows process flag to be changed - emits safety after
+func setSafeToProcessFlag(flagName: String, safety: bool):
+	if not safeToProcessFlags.has(flagName):
 		return
-	safeToProcess = safety
-	if not safeToProcess:
-		print("pause")
-		get_tree().paused = true
-	else:
-		print("unpause")
-		get_tree().paused = false
-	emit_signal("processSafetyChanged", safeToProcess)
+	if safeToProcessFlags[flagName] == safety:
+		return
+	safeToProcessFlags[flagName] = safety
+	
+	var newSafety = checkSafeToProcess()
+	emit_signal("processSafetyChanged", newSafety)
+	if isServerHost():
+		get_tree().paused = not newSafety
+		
+	
 
+# returns true if all safety flags are true, otherwise false
+func checkSafeToProcess()->bool:
+	for key in safeToProcessFlags:
+		if safeToProcessFlags[key]  == false:
+			return false
+	return true
 
 # ADMIN METHODS
 
@@ -64,8 +88,6 @@ func sendToGuestU(peerID: int,dataPack: DataPack, priority: int = 0):
 	if not isServerHost():
 		return
 	rpc_unreliable_id(peerID, "pushToDataBuffer", dataPack, priority)
-
-
 
 
 # pushes json data onto a buffer in the server host

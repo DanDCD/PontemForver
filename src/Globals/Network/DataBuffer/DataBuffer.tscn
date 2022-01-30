@@ -3,4 +3,5 @@
 [ext_resource path="res://src/Globals/Network/DataBuffer/DataBuffer.gd" type="Script" id=1]
 
 [node name="DataBuffer" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )

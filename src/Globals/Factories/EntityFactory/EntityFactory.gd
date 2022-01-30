@@ -19,13 +19,21 @@ func getEntity(id: int)->Entity:
 	
 
 
-func createPlayer():
+func createPlayer(toAdd:bool):
 	var player = ResourceManager.PLAYER.instance()
 	var controller = ResourceManager.PLAYERCONTROLLER.instance()
 	player.addComponent(controller)
 	assignEntity(player)
+	addToWorld(toAdd, player)
+	return player
 	
-func createPlayerDummy():
+func createPlayerDummy(toAdd:bool):
 	var player = ResourceManager.PLAYER.instance()
 	assignEntity(player)
+	addToWorld(toAdd, player)
+	return player
 
+
+func addToWorld(toAdd:bool, entity: Entity):
+	if toAdd and SceneManager.hasWorld():
+		SceneManager.currentWorld.addEntity(entity)

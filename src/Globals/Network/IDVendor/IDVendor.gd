@@ -25,7 +25,7 @@ func getNewComponentID():
 
 
 func checkIDsSufficient():
-	NetworkInterface.setSafeToProcess(validEntityIDs.size() >= 500 && validComponentIDs.size() >= 1000)
+	NetworkInterface.setSafeToProcessFlag("enoughIDs", validEntityIDs.size() >= 500 && validComponentIDs.size() >= 1000)
 		
 
 
